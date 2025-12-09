@@ -69,10 +69,10 @@ export default function FeaturedJobs() {
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-600">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-600 animate-fade-in-up">
             Featured <span className="text-purple-600">Jobs</span>
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-600 max-w-2xl mx-auto animate-fade-in-up animation-delay-100">
             Choose jobs from the top employers and apply for the same.
           </p>
         </div>
@@ -97,19 +97,19 @@ export default function FeaturedJobs() {
                     key={job.id}
                     className="w-full flex-shrink-0 px-2"
                   >
-                    <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                    <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
                       {/* Card Header */}
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex items-center space-x-3">
-                          <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center p-2">
+                          <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center p-2 group-hover:bg-purple-50 transition-colors duration-300">
                             <img
                               src={job.logo}
                               alt={job.company}
-                              className="w-full h-full object-contain"
+                              className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
                             />
                           </div>
                           <div>
-                            <h3 className="font-semibold text-gray-900">{job.company}</h3>
+                            <h3 className="font-semibold text-gray-900 hover:text-purple-600 transition-colors cursor-pointer">{job.company}</h3>
                             <p className="text-sm text-gray-500 flex items-center">
                               <MapPin size={14} className="mr-1" />
                               {job.location}
@@ -118,17 +118,17 @@ export default function FeaturedJobs() {
                         </div>
                         <button
                           onClick={() => toggleFavorite(job.id)}
-                          className="p-2 hover:bg-gray-100 rounded-full transition"
+                          className="p-2 hover:bg-red-50 rounded-full transition-all duration-200 hover:scale-110 active:scale-95"
                         >
                           <Heart
                             size={20}
-                            className={favorites[job.id] ? 'fill-red-500 text-red-500' : 'text-gray-400'}
+                            className={`transition-all duration-200 ${favorites[job.id] ? 'fill-red-500 text-red-500 animate-heart-beat' : 'text-gray-400 hover:text-red-500'}`}
                           />
                         </button>
                       </div>
 
                       {/* Job Title */}
-                      <h4 className="text-xl font-bold text-gray-900 mb-2">
+                      <h4 className="text-xl font-bold text-gray-900 mb-2 hover:text-purple-600 transition-colors cursor-pointer">
                         {job.title}
                       </h4>
 
@@ -139,35 +139,35 @@ export default function FeaturedJobs() {
 
                       {/* Job Details */}
                       <div className="flex flex-wrap gap-2 mb-4">
-                        <span className="px-3 py-1 bg-purple-50 text-purple-600 rounded-full text-xs font-medium">
+                        <span className="px-3 py-1 bg-purple-50 text-purple-600 rounded-full text-xs font-medium hover:bg-purple-100 transition-colors cursor-default">
                           {job.type}
                         </span>
-                        <span className="px-3 py-1 bg-green-50 text-green-600 rounded-full text-xs font-medium">
+                        <span className="px-3 py-1 bg-green-50 text-green-600 rounded-full text-xs font-medium hover:bg-green-100 transition-colors cursor-default">
                           {job.experience}
                         </span>
-                        <span className="px-3 py-1 bg-orange-50 text-orange-600 rounded-full text-xs font-medium">
+                        <span className="px-3 py-1 bg-orange-50 text-orange-600 rounded-full text-xs font-medium hover:bg-orange-100 transition-colors cursor-default">
                           {job.workType}
                         </span>
                       </div>
 
                       {/* Job Meta Info */}
                       <div className="grid grid-cols-2 gap-3 mb-4 pb-4 border-b border-gray-100">
-                        <div className="flex items-center text-sm text-gray-600">
+                        <div className="flex items-center text-sm text-gray-600 hover:text-purple-600 transition-colors">
                           <Users size={16} className="mr-2 text-gray-400" />
                           <span>{job.positions} Positions</span>
                         </div>
                         <div className="flex items-center text-sm text-gray-600">
-                          <DollarSign size={16} className="mr-2 text-gray-400" />
+                          <DollarSign size={16} className="mr-2 text-green-400" />
                           <span className="font-semibold text-green-600">{job.salary}</span>
                         </div>
                       </div>
 
                       {/* Action Buttons */}
                       <div className="flex gap-3">
-                        <button className="flex-1 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition font-medium">
+                        <button className="flex-1 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 font-medium">
                           Apply Now
                         </button>
-                        <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:border-purple-600 hover:text-purple-600 transition font-medium">
+                        <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:border-purple-600 hover:text-purple-600 hover:shadow-md hover:scale-105 active:scale-95 transition-all duration-200 font-medium">
                           View Details
                         </button>
                       </div>
@@ -180,17 +180,17 @@ export default function FeaturedJobs() {
             {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition z-10"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 bg-white rounded-full p-2 shadow-lg hover:bg-purple-600 hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-200 z-10 group"
               aria-label="Previous job"
             >
-              <ChevronLeft size={24} className="text-gray-700" />
+              <ChevronLeft size={24} className="text-gray-700 group-hover:text-white transition-colors" />
             </button>
             <button
               onClick={nextSlide}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition z-10"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 bg-white rounded-full p-2 shadow-lg hover:bg-purple-600 hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-200 z-10 group"
               aria-label="Next job"
             >
-              <ChevronRight size={24} className="text-gray-700" />
+              <ChevronRight size={24} className="text-gray-700 group-hover:text-white transition-colors" />
             </button>
 
             {/* Dots Indicator */}
@@ -199,10 +199,10 @@ export default function FeaturedJobs() {
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}
-                  className={`w-2 h-2 rounded-full transition-all ${
+                  className={`h-2 rounded-full transition-all duration-300 hover:scale-110 ${
                     currentSlide === index 
                       ? 'bg-purple-600 w-6' 
-                      : 'bg-gray-300'
+                      : 'bg-gray-300 w-2 hover:bg-purple-400'
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
@@ -212,81 +212,91 @@ export default function FeaturedJobs() {
         ) : (
           // Desktop Grid View
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            {featuredJobs.slice(0, visibleJobs).map((job) => (
+            {featuredJobs.slice(0, visibleJobs).map((job, index) => (
               <div
                 key={job.id}
-                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group"
+                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-gray-100 group cursor-pointer"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
                 {/* Card Header */}
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center p-2">
+                    <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center p-2 group-hover:bg-purple-50 transition-colors duration-300">
                       <img
                         src={job.logo}
                         alt={job.company}
-                        className="w-full h-full object-contain"
+                        className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
                       />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900">{job.company}</h3>
-                      <p className="text-sm text-gray-500 flex items-center">
+                      <h3 className="font-semibold text-gray-900 group-hover:text-purple-600 transition-colors">{job.company}</h3>
+                      <p className="text-sm text-gray-500 flex items-center group-hover:text-purple-500 transition-colors">
                         <MapPin size={14} className="mr-1" />
                         {job.location}
                       </p>
                     </div>
                   </div>
                   <button
-                    onClick={() => toggleFavorite(job.id)}
-                    className="p-2 hover:bg-gray-100 rounded-full transition"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleFavorite(job.id);
+                    }}
+                    className="p-2 hover:bg-red-50 rounded-full transition-all duration-200 hover:scale-110 active:scale-95"
                   >
                     <Heart
                       size={20}
-                      className={favorites[job.id] ? 'fill-red-500 text-red-500' : 'text-gray-400'}
+                      className={`transition-all duration-200 ${favorites[job.id] ? 'fill-red-500 text-red-500 animate-heart-beat' : 'text-gray-400 hover:text-red-500'}`}
                     />
                   </button>
                 </div>
 
                 {/* Job Title */}
-                <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition">
+                <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors">
                   {job.title}
                 </h4>
 
                 {/* Job Description */}
-                <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                <p className="text-gray-600 text-sm mb-4 line-clamp-2 group-hover:text-gray-700 transition-colors">
                   {job.description}
                 </p>
 
                 {/* Job Details */}
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-3 py-1 bg-purple-50 text-purple-600 rounded-full text-xs font-medium">
+                  <span className="px-3 py-1 bg-purple-50 text-purple-600 rounded-full text-xs font-medium hover:bg-purple-100 hover:scale-105 transition-all cursor-default">
                     {job.type}
                   </span>
-                  <span className="px-3 py-1 bg-green-50 text-green-600 rounded-full text-xs font-medium">
+                  <span className="px-3 py-1 bg-green-50 text-green-600 rounded-full text-xs font-medium hover:bg-green-100 hover:scale-105 transition-all cursor-default">
                     {job.experience}
                   </span>
-                  <span className="px-3 py-1 bg-orange-50 text-orange-600 rounded-full text-xs font-medium">
+                  <span className="px-3 py-1 bg-orange-50 text-orange-600 rounded-full text-xs font-medium hover:bg-orange-100 hover:scale-105 transition-all cursor-default">
                     {job.workType}
                   </span>
                 </div>
 
                 {/* Job Meta Info */}
                 <div className="grid grid-cols-2 gap-3 mb-4 pb-4 border-b border-gray-100">
-                  <div className="flex items-center text-sm text-gray-600">
-                    <Users size={16} className="mr-2 text-gray-400" />
+                  <div className="flex items-center text-sm text-gray-600 hover:text-purple-600 transition-colors">
+                    <Users size={16} className="mr-2 text-gray-400 group-hover:text-purple-500 transition-colors" />
                     <span>{job.positions} Positions</span>
                   </div>
                   <div className="flex items-center text-sm text-gray-600">
-                    <DollarSign size={16} className="mr-2 text-gray-400" />
-                    <span className="font-semibold text-green-600">{job.salary}</span>
+                    <DollarSign size={16} className="mr-2 text-green-400 group-hover:text-green-500 transition-colors" />
+                    <span className="font-semibold text-green-600 group-hover:text-green-700 transition-colors">{job.salary}</span>
                   </div>
                 </div>
 
                 {/* Action Buttons */}
                 <div className="flex gap-3">
-                  <button className="flex-1 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition font-medium">
+                  <button 
+                    onClick={(e) => e.stopPropagation()}
+                    className="flex-1 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 font-medium"
+                  >
                     Apply Now
                   </button>
-                  <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:border-purple-600 hover:text-purple-600 transition font-medium">
+                  <button 
+                    onClick={(e) => e.stopPropagation()}
+                    className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:border-purple-600 hover:text-purple-600 hover:shadow-md hover:scale-105 active:scale-95 transition-all duration-200 font-medium"
+                  >
                     View Details
                   </button>
                 </div>
@@ -300,7 +310,7 @@ export default function FeaturedJobs() {
           <div className="text-center">
             <button
               onClick={loadMore}
-              className="px-8 py-3 border-2 border-purple-600 text-purple-600 rounded-lg hover:bg-purple-600 hover:text-white transition font-medium"
+              className="px-8 py-3 border-2 border-purple-600 text-purple-600 rounded-lg hover:bg-purple-600 hover:text-white hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 font-medium"
             >
               Load More Jobs
             </button>
